@@ -1,3 +1,4 @@
+import java.math.BigInteger
 import java.util.*
 import java.util.stream.Collectors
 
@@ -5,16 +6,16 @@ class Day12 : Day {
     val START = "start"
     val END = "end"
 
-    override fun part1(inputList: List<String>): Int {
+    override fun part1(inputList: List<String>): String {
         val map: Map<String, MutableList<String>> = createMaps(inputList)
         val paths = findPaths(map = map, start = START, end = END, visitedList = emptyList(), canDoubleVisitSmallCave = false)
-        return paths.size
+        return paths.size.toString()
     }
 
-    override fun part2(inputList: List<String>): Int {
+    override fun part2(inputList: List<String>): String {
         val map: Map<String, MutableList<String>> = createMaps(inputList)
         val paths = findPaths(map = map, start = START, end = END, visitedList = emptyList(), canDoubleVisitSmallCave = true)
-        return paths.size
+        return paths.size.toString()
     }
 
     private fun findPaths(map: Map<String, List<String>>, start: String, end: String, visitedList: List<String>, canDoubleVisitSmallCave: Boolean): List<List<String>> {
@@ -60,9 +61,9 @@ fun main() {
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day12_test")
     val part1 = day.part1(testInput)
-    check(part1 == 10)
+    check(part1.toInt() == 10)
     val part2 = day.part2(testInput)
-    check(part2 == 36)
+    check(part2.toInt() == 36)
 
     val input = readInput("Day12")
     println(day.part1(input))

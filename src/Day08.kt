@@ -1,8 +1,9 @@
+import java.math.BigInteger
 import java.util.*
 import java.util.stream.Collectors
 
 class Day8 : Day {
-    override fun part1(inputList: List<String>): Int {
+    override fun part1(inputList: List<String>): String {
         val displays = parse(inputList)
         return displays.stream()
             .map { d: SevenSegmentDisplay -> d.digitsList }
@@ -12,15 +13,15 @@ class Day8 : Day {
                     d.length
                 )
             }
-            .count().toInt()
+            .count().toString()
     }
 
-    override fun part2(inputList: List<String>): Int {
+    override fun part2(inputList: List<String>): String {
         return inputList.stream().map { entry: String ->
             parseEntry(
                 entry
             )
-        }.mapToInt { e: SevenSegmentDisplay -> e.output() }.sum()
+        }.mapToInt { e: SevenSegmentDisplay -> e.output() }.sum().toString()
     }
 
     class SevenSegmentDisplay(var signalPatternsList: List<String>, var digitsList: List<String>) {
@@ -246,8 +247,8 @@ fun main() {
     val testInput = readInput("Day08_test")
     val part1 = day.part1(testInput)
     val part2 = day.part2(testInput)
-    check(part1 == 26)
-    check(part2 == 61229)
+    check(part1.toInt() == 26)
+    check(part2.toInt() == 61229)
 
     val input = readInput("Day08")
     println(day.part1(input))

@@ -1,16 +1,16 @@
 import kotlin.streams.toList
 
 class Day13 : Day {
-    override fun part1(inputList: List<String>): Int {
+    override fun part1(inputList: List<String>): String {
         val pair = createMatrix(inputList)
         val dotsArr = pair.first
         val foldsList = pair.second
         val firstFold = foldsList[0]
         val resArr = foldArr(dotsArr, firstFold.first, firstFold.second)
-        return countVisibleCells(resArr)
+        return countVisibleCells(resArr).toString()
     }
 
-    override fun part2(inputList: List<String>): Int {
+    override fun part2(inputList: List<String>): String {
         val pair = createMatrix(inputList)
         val dotsArr = pair.first
         val foldsList = pair.second
@@ -19,7 +19,7 @@ class Day13 : Day {
             val foldPoint = foldsList[idx]
             resArr = foldArr(resArr, foldPoint.first, foldPoint.second)
         }
-        return countVisibleCells(resArr)
+        return countVisibleCells(resArr).toString()
     }
 
     private fun transformInStringArr(arr: Array<IntArray>): Array<Array<String>> {
@@ -114,9 +114,9 @@ fun main() {
 
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day13_test")
-    check(day.part1(testInput) == 17)
+    check(day.part1(testInput).toInt() == 17)
     val part2 = day.part2(testInput)
-    check(part2 == 16)
+    check(part2.toInt() == 16)
 
     val input = readInput("Day13")
     println(day.part1(input))

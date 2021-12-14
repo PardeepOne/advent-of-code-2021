@@ -21,8 +21,8 @@ class Day11(inputList: List<String>) : Day {
         }
     }
 
-    override fun part1(inputList: List<String>): Int {
-        return elaborate(steps = 100, wantsAllFlashedFirstStep = false).first
+    override fun part1(inputList: List<String>): String {
+        return elaborate(steps = 100, wantsAllFlashedFirstStep = false).first.toString()
     }
 
     private fun elaborate(steps: Int?, wantsAllFlashedFirstStep: Boolean): Pair<Int, Int?> {
@@ -149,9 +149,9 @@ class Day11(inputList: List<String>) : Day {
         return cellCounter == rows * columnSize
     }
 
-    override fun part2(inputList: List<String>): Int {
+    override fun part2(inputList: List<String>): String {
         val elaboration = elaborate(steps = null, wantsAllFlashedFirstStep = true)
-        return elaboration.second ?: 0
+        return (elaboration.second ?: 0).toString()
     }
 }
 
@@ -161,9 +161,9 @@ fun main() {
     val testInput = readInput("Day11_test")
     var day = Day11(testInput)
     val part1 = day.part1(testInput)
-    check(part1 == 1656)
+    check(part1.toInt() == 1656)
     val part2 = day.part2(testInput)
-    check(part2 == 95)
+    check(part2.toInt() == 95)
     //Why 195 ?
     // check(part2 == 195)
 
